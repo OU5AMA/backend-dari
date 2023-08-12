@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+
 @Entity
 public class Item {
     @Id
@@ -16,9 +17,13 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemState state;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-    private List<Picture> pictures;
+
+    private List<Pictures> pictures;
     @ManyToMany
     private List<HousePart> houseParts;
+
+//    Getters and Setters
+
 
     public Long getId() {
         return id;
@@ -60,19 +65,19 @@ public class Item {
         this.favorite = favorite;
     }
 
-    public String getState() {
+    public ItemState getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(ItemState state) {
         this.state = state;
     }
 
-    public List<Picture> getPictures() {
+    public List<Pictures> getPictures() {
         return pictures;
     }
 
-    public void setPictures(List<Picture> pictures) {
+    public void setPictures(List<Pictures> pictures) {
         this.pictures = pictures;
     }
 
