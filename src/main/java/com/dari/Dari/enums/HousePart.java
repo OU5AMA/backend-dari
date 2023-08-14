@@ -1,4 +1,4 @@
-package com.dari.Dari;
+package com.dari.Dari.enums;
 
 public enum HousePart {
     BEDROOMS(0),

@@ -1,5 +1,6 @@
 package com.dari.Dari.model;
 
+import com.dari.Dari.enums.ItemState;
 import jakarta.persistence.*;
 
 import java.util.List;

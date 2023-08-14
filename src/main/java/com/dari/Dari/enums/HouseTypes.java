@@ -1,4 +1,4 @@
-package com.dari.Dari.model;
+package com.dari.Dari.enums;
 
 public enum HouseTypes {
     HOUSE,
