@@ -1,6 +1,8 @@
 package com.dari.Dari.model;
 
-import com.dari.Dari.enums.ItemState;
+import com.dari.Dari.model.enums.BuildingTypes;
+import com.dari.Dari.model.HousePart;
+import com.dari.Dari.model.enums.ListOfCities;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -13,14 +15,16 @@ public class Item {
     private Long id;
     private String name;
     private String address;
+    @Enumerated(EnumType.STRING)
+    private ListOfCities city;
     private Double price;
     private Boolean favorite;
     @Enumerated(EnumType.STRING)
-    private ItemState state;
+    private BuildingTypes state;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
-
     private List<Pictures> pictures;
-    @ManyToMany
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<HousePart> houseParts;
 
 //    Getters and Setters
@@ -50,6 +54,14 @@ public class Item {
         this.address = address;
     }
 
+    public ListOfCities getCity() {
+        return city;
+    }
+
+    public void setCity(ListOfCities city) {
+        this.city = city;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -66,11 +78,11 @@ public class Item {
         this.favorite = favorite;
     }
 
-    public ItemState getState() {
+    public BuildingTypes getState() {
         return state;
     }
 
-    public void setState(ItemState state) {
+    public void setState(BuildingTypes state) {
         this.state = state;
     }
 
@@ -80,13 +92,5 @@ public class Item {
 
     public void setPictures(List<Pictures> pictures) {
         this.pictures = pictures;
-    }
-
-    public List<HousePart> getHouseParts() {
-        return houseParts;
-    }
-
-    public void setHouseParts(List<HousePart> houseParts) {
-        this.houseParts = houseParts;
     }
 }
