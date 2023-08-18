@@ -1,4 +1,4 @@
-package com.dari.Dari.controller;
+package com.dari.Dari.service;
 
 import org.springframework.stereotype.Service;
 

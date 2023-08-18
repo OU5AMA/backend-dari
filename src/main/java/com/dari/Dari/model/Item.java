@@ -1,8 +1,7 @@
 package com.dari.Dari.model;
 
-import com.dari.Dari.model.enums.BuildingTypes;
-import com.dari.Dari.model.HousePart;
-import com.dari.Dari.model.enums.ListOfCities;
+import com.dari.Dari.model.enums.BuildingTypesEnum;
+import com.dari.Dari.model.enums.ListOfCitiesEnum;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,11 +15,11 @@ public class Item {
     private String name;
     private String address;
     @Enumerated(EnumType.STRING)
-    private ListOfCities city;
+    private ListOfCitiesEnum city;
     private Double price;
     private Boolean favorite;
     @Enumerated(EnumType.STRING)
-    private BuildingTypes state;
+    private BuildingTypesEnum state;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<Pictures> pictures;
 
@@ -54,11 +53,11 @@ public class Item {
         this.address = address;
     }
 
-    public ListOfCities getCity() {
+    public ListOfCitiesEnum getCity() {
         return city;
     }
 
-    public void setCity(ListOfCities city) {
+    public void setCity(ListOfCitiesEnum city) {
         this.city = city;
     }
 
@@ -78,11 +77,11 @@ public class Item {
         this.favorite = favorite;
     }
 
-    public BuildingTypes getState() {
+    public BuildingTypesEnum getState() {
         return state;
     }
 
-    public void setState(BuildingTypes state) {
+    public void setState(BuildingTypesEnum state) {
         this.state = state;
     }
 

@@ -1,4 +1,4 @@
-package com.dari.Dari.controller;
+package com.dari.Dari.dao;
 
 import com.dari.Dari.model.Pictures;
 import org.springframework.data.jpa.repository.JpaRepository;

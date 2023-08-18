@@ -1,13 +1,13 @@
-package com.dari.Dari.enums;
+package com.dari.Dari.model.enums;
 
-public enum HousePart {
+public enum HousePartEnum {
     BEDROOMS(0),
     BATHROOMS(0),
     KITCHEN(0),
     LIVING_ROOM(0);
 
     private final int value;
-    HousePart(int value){
+    HousePartEnum(int value){
         this.value = value;
     }
 

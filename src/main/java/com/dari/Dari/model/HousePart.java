@@ -1,5 +1,6 @@
 package com.dari.Dari.model;
 
+import com.dari.Dari.model.enums.HousePartEnum;
 import jakarta.persistence.*;
 
 @Entity
