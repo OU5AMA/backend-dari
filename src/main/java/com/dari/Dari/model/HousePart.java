@@ -12,7 +12,6 @@ public class HousePart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long houseId;
-
     @Enumerated(EnumType.STRING)
     private HousePartEnum part;
     private int value;

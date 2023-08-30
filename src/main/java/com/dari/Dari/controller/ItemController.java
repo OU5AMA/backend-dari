@@ -24,8 +24,8 @@ public class ItemController {
 
 //    Get an item
     @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable Long id){
-        Optional<Item> item = itemRepository.findById(id);
+    public ResponseEntity<Item> getItemById(@PathVariable Long itemId){
+        Optional<Item> item = itemRepository.findById(itemId);
         return  item.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
