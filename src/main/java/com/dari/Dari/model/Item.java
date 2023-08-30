@@ -3,15 +3,19 @@ package com.dari.Dari.model;
 import com.dari.Dari.model.enums.BuildingTypesEnum;
 import com.dari.Dari.model.enums.ListOfCitiesEnum;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long ItemId;
     private String name;
     private String address;
     @Enumerated(EnumType.STRING)
@@ -26,70 +30,21 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<HousePart> houseParts;
 
-//    Getters and Setters
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Item(String name,
+                String address,
+                ListOfCitiesEnum city,
+                Double price,
+                Boolean favorite,
+                BuildingTypesEnum state,
+                List<Pictures> pictures,
+                List<HousePart> houseParts) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
         this.address = address;
-    }
-
-    public ListOfCitiesEnum getCity() {
-        return city;
-    }
-
-    public void setCity(ListOfCitiesEnum city) {
         this.city = city;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public Boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
-    }
-
-    public BuildingTypesEnum getState() {
-        return state;
-    }
-
-    public void setState(BuildingTypesEnum state) {
         this.state = state;
-    }
-
-    public List<Pictures> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(List<Pictures> pictures) {
         this.pictures = pictures;
+        this.houseParts = houseParts;
     }
 }
