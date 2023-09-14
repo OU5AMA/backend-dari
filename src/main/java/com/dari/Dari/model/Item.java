@@ -36,20 +36,4 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<HousePart> houseParts;
 
-    public Item(
-                String address,
-                ListOfCitiesEnum city,
-                Double price,
-                Boolean favorite,
-                BuildingTypesEnum state,
-                List<Pictures> pictures,
-                List<HousePart> houseParts) {
-        this.address = address;
-        this.city = city;
-        this.price = price;
-        this.favorite = favorite;
-        this.state = state;
-        this.pictures = pictures;
-        this.houseParts = houseParts;
-    }
 }
