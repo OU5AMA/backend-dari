@@ -1,113 +1,62 @@
 package com.dari.Dari.model;
 
+import com.dari.Dari.model.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long userId;
     private String username;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean active;
-
-    @OneToMany(mappedBy = "user")
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
     private List<Item> favoriteItems;
+    private Boolean isEnabled;
+    private Boolean isLocked;
+    private Boolean isEmailConfirmed = false;
 
-//    Constructors, getters, setters, and other methods
+//    Constructors
 
 
-    public User() {
-    }
-
-    public User(Long id, String username, String email, String password, String firstName, String lastName, String phoneNumber, boolean active, List<Item> favoriteItems) {
-        this.id = id;
+    public User(
+            String username,
+            String email,
+            String password,
+            String firstName,
+            String lastName,
+            String phoneNumber,
+            UserRole userRole,
+            Boolean isEnabled,
+            Boolean isLocked) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.active = active;
-        this.favoriteItems = favoriteItems;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public List<Item> getFavoriteItems() {
-        return favoriteItems;
-    }
-
-    public void setFavoriteItems(List<Item> favoriteItems) {
-        this.favoriteItems = favoriteItems;
+        this.userRole = userRole != null ? userRole: UserRole.CLIENT;
+        this.isEnabled = isEnabled;
+        this.isLocked = isLocked;
     }
 }

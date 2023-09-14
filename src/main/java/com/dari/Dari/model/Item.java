@@ -3,6 +3,7 @@ package com.dari.Dari.model;
 import com.dari.Dari.model.enums.BuildingTypesEnum;
 import com.dari.Dari.model.enums.ListOfCitiesEnum;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,12 +13,15 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Builder
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ItemId;
-    private String name;
+    private Long itemId;
     private String address;
+    private int yearBuilt;
+    private int lotSize;
+    private int squareFootage;
     @Enumerated(EnumType.STRING)
     private ListOfCitiesEnum city;
     private Double price;
@@ -30,7 +34,7 @@ public class Item {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<HousePart> houseParts;
 
-    public Item(String name,
+    public Item(
                 String address,
                 ListOfCitiesEnum city,
                 Double price,
@@ -38,7 +42,6 @@ public class Item {
                 BuildingTypesEnum state,
                 List<Pictures> pictures,
                 List<HousePart> houseParts) {
-        this.name = name;
         this.address = address;
         this.city = city;
         this.price = price;

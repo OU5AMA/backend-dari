@@ -19,6 +19,7 @@ public class HousePart {
     @JoinColumn(name = "item_id")
     private Item item;
 
+//    constructor
     public HousePart(HousePartEnum part, int value, Item item) {
         this.part = part;
         this.value = value;
