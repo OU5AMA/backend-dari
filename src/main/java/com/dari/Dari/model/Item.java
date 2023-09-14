@@ -32,8 +32,8 @@ public class Item {
     private BuildingTypesEnum state;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<Pictures> pictures;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "item")
     private List<HousePart> houseParts;
+    private UtilitiesAndServices utilitiesAndServices;
 
 }
