@@ -3,6 +3,7 @@ package com.dari.Dari.model;
 import com.dari.Dari.model.enums.BuildingTypesEnum;
 import com.dari.Dari.model.enums.ListOfCitiesEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,10 @@ import java.util.List;
 
 
 @Entity
-@Data
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
